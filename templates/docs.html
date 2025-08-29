@@ -674,6 +674,27 @@
             </div>
 
             <nav class="sidebar-nav">
+                <!-- Telegram 社区 -->
+                <div class="nav-group" style="background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%); padding: 15px; margin: 15px; border-radius: 8px; border: 2px solid #0088cc;">
+                    <div class="nav-group-title" style="color: #0088cc; font-weight: 700; margin-bottom: 15px;">📱 Telegram 社区</div>
+                    <a href="https://t.me/fpusdt" target="_blank" class="nav-item telegram-link"
+                       style="background: linear-gradient(135deg, #0088cc, #0078b7); color: white; border-radius: 6px; margin-bottom: 8px; border-left: none; text-decoration: none; cursor: pointer;"
+                       onmouseover="this.style.background='linear-gradient(135deg, #0078b7, #006ca3)'; this.style.transform='translateX(3px)'"
+                       onmouseout="this.style.background='linear-gradient(135deg, #0088cc, #0078b7)'; this.style.transform='translateX(0)'">
+                        <span class="nav-item-icon">📢</span>
+                        官方频道
+                        <span style="float: right; opacity: 0.8;">↗</span>
+                    </a>
+                    <a href="https://t.me/fpusdtcom" target="_blank" class="nav-item telegram-link"
+                       style="background: linear-gradient(135deg, #229ed9, #1e8bc3); color: white; border-radius: 6px; border-left: none; text-decoration: none; cursor: pointer;"
+                       onmouseover="this.style.background='linear-gradient(135deg, #1e8bc3, #1a7bb0)'; this.style.transform='translateX(3px)'"
+                       onmouseout="this.style.background='linear-gradient(135deg, #229ed9, #1e8bc3)'; this.style.transform='translateX(0)'">
+                        <span class="nav-item-icon">💬</span>
+                        交流群组
+                        <span style="float: right; opacity: 0.8;">↗</span>
+                    </a>
+                </div>
+
                 <div class="nav-group">
                     <div class="nav-group-title">快速导航</div>
                     <a href="#notice" class="nav-item">
@@ -798,6 +819,29 @@
             <div class="content-header">
                 <h1 class="page-title">🚀 TRC20 API 3.0 - Go版本</h1>
                 <p class="page-subtitle">专业的TRON区块链接口服务 - Go语言高性能实现</p>
+
+                <!-- Telegram 社区链接 -->
+                <div style="margin-top: 30px; text-align: center;">
+                    <div style="display: inline-flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                        <a href="https://t.me/fpusdt" target="_blank"
+                           style="display: inline-flex; align-items: center; padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.3);"
+                           onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(-2px)'"
+                           onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)'">
+                            <span style="font-size: 1.1rem; margin-right: 6px;">📢</span>
+                            官方频道
+                        </a>
+                        <a href="https://t.me/fpusdtcom" target="_blank"
+                           style="display: inline-flex; align-items: center; padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; transition: all 0.3s ease; border: 1px solid rgba(255,255,255,0.3);"
+                           onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='translateY(-2px)'"
+                           onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='translateY(0)'">
+                            <span style="font-size: 1.1rem; margin-right: 6px;">💬</span>
+                            交流群组
+                        </a>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.9;">
+                        加入我们的 Telegram 社区，获取最新更新和技术支持
+                    </div>
+                </div>
             </div>
 
             <!-- 内容主体 -->
@@ -1870,18 +1914,25 @@
             // 导航点击事件
             document.querySelectorAll(".nav-item").forEach(link => {
                 link.addEventListener("click", function(e) {
-                    e.preventDefault();
-
-                    // 先移除所有active状态
-                    document.querySelectorAll(".nav-item").forEach(item => {
-                        item.classList.remove('active');
-                    });
-
-                    // 为当前点击的项添加active状态
-                    this.classList.add('active');
-
                     const href = this.getAttribute("href");
+
+                    // 如果是外部链接（以http开头），直接打开，不阻止默认行为
+                    if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+                        return; // 让浏览器正常处理链接
+                    }
+
+                    // 只有内部锚点链接才阻止默认行为
                     if (href && href.startsWith('#')) {
+                        e.preventDefault();
+
+                        // 先移除所有active状态
+                        document.querySelectorAll(".nav-item").forEach(item => {
+                            item.classList.remove('active');
+                        });
+
+                        // 为当前点击的项添加active状态
+                        this.classList.add('active');
+
                         const target = document.querySelector(href);
                         if (target) {
                             target.scrollIntoView({
@@ -1988,7 +2039,10 @@
             // 点击导航项目后关闭移动端菜单
             document.querySelectorAll('.nav-item').forEach(item => {
                 item.addEventListener('click', function() {
-                    if (window.innerWidth <= 1024) {
+                    const href = this.getAttribute("href");
+
+                    // 只有内部锚点链接才关闭移动端菜单，外部链接保持菜单状态
+                    if (window.innerWidth <= 1024 && href && href.startsWith('#')) {
                         setTimeout(() => {
                             closeMobileSidebar();
                         }, 100);
@@ -2042,7 +2096,7 @@
             document.body.style.overflow = '';
         }
 
-        // 添加弹跳动画
+        // 添加弹跳动画和Telegram链接样式
         const style = document.createElement('style');
         style.textContent = `
             @keyframes bounce {
@@ -2055,6 +2109,15 @@
                 80% {
                     transform: translateY(-5px);
                 }
+            }
+
+            /* Telegram链接过渡效果 */
+            .telegram-link {
+                transition: all 0.3s ease !important;
+            }
+
+            .telegram-link:hover {
+                box-shadow: 0 4px 12px rgba(0,136,204,0.4) !important;
             }
         `;
         document.head.appendChild(style);

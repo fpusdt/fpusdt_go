@@ -4,6 +4,8 @@
 
 [![Go Version](https://img.shields.io/badge/Go-1.19+-blue.svg)](https://golang.org/)
 [![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows%20%7C%20macOS-lightgrey.svg)](https://github.com/)
+[![Telegram Channel](https://img.shields.io/badge/Telegram-频道-blue?logo=telegram)](https://t.me/fpusdt)
+[![Telegram Group](https://img.shields.io/badge/Telegram-群组-blue?logo=telegram)](https://t.me/fpusdtcom)
 
 ## 📋 项目简介
 
@@ -580,6 +582,8 @@ var config = &types.Config{
 ### 📞 联系方式
 
 - 👨‍💻 **开发者**: [@king_orz](https://t.me/king_orz)
+- 📢 **官方频道**: [@fpusdt](https://t.me/fpusdt) - 获取最新更新和公告
+- 💬 **交流群组**: [@fpusdtcom](https://t.me/fpusdtcom) - 技术交流和问题讨论
 - 🌐 **官网**: [https://www.919968.xyz/](https://www.919968.xyz/)
 - 📧 **邮箱**: 通过官网联系
 - 💬 **在线客服**: 网站内置客服支持
@@ -639,13 +643,33 @@ var config = &types.Config{
 
 <div align="center">
 
+## 🌟 加入我们的社区
+
+[![Telegram Channel](https://img.shields.io/badge/📢_官方频道-@fpusdt-0088cc?style=for-the-badge&logo=telegram)](https://t.me/fpusdt)
+[![Telegram Group](https://img.shields.io/badge/💬_交流群组-@fpusdtcom-229ed9?style=for-the-badge&logo=telegram)](https://t.me/fpusdtcom)
+
+**加入我们的 Telegram 社区，获取：**
+
+- 🚀 最新版本更新通知
+- 💡 技术交流和问题解答
+- 📚 使用教程和最佳实践
+- 🎯 开发经验分享
+
+</div>
+
+---
+
+<div align="center">
+
 **🎊 恭喜！您发现了最优秀的 TRON API 解决方案！**
 
 _这是一个功能完整、性能优异、易于部署的 TRON 区块链 API 服务_
 
 **💌 温馨提示**: 接受各种代码定制，有问题请联系开发者
 
-[![Telegram](https://img.shields.io/badge/Telegram-@king__orz-blue?logo=telegram)](https://t.me/king_orz)
+[![Telegram Developer](https://img.shields.io/badge/开发者-@king__orz-blue?logo=telegram)](https://t.me/king_orz)
+[![Telegram Channel](https://img.shields.io/badge/官方频道-@fpusdt-0088cc?logo=telegram)](https://t.me/fpusdt)
+[![Telegram Group](https://img.shields.io/badge/交流群组-@fpusdtcom-229ed9?logo=telegram)](https://t.me/fpusdtcom)
 [![Website](https://img.shields.io/badge/Website-919968.xyz-green?logo=firefox)](https://www.919968.xyz/)
 
 </div>
