@@ -1,76 +1,32 @@
-# Binaries for programs and plugins
+# 编译产物
 *.exe
-*.exe~
 *.dll
 *.so
 *.dylib
 
-# Test binary, built with `go test -c`
-*.test
-
-# Output of the go coverage tool, specifically when used with LiteIDE
+# Go 编译缓存
 *.out
 
-# Dependency directories (remove the comment below to include it)
-# vendor/
+# 依赖目录
+vendor/
 
-# Go workspace file
-go.work
-
-# IDE files
+# IDE 配置文件
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
-# OS generated files
+# 系统文件
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# Log files
+# 日志文件
 *.log
 
-# Temporary files
+# 临时文件
 *.tmp
 *.temp
 
-# Build artifacts
-/dist/
-/build/
-/bin/
-
-# Environment files
+# 环境配置文件（如果有的话）
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Backup files
-*.bak
-*.backup
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Coverage directory used by tools like istanbul
-coverage/
-*.lcov
-
-# nyc test coverage
-.nyc_output
-
-# Dependency lock files (optional, uncomment if needed)
-# go.sum
-
-# Local configuration files
 config.local.*
