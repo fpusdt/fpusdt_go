@@ -22,17 +22,34 @@ FPUSDT 是一个专业的 TRON 区块链 API 服务，采用 Go 语言开发，�
 
 ```
 fpusdt_go/
-├── 📄 main.go               # 主程序文件
-├── 📋 go.mod                # Go模块定义
-├── 🔒 go.sum                # 依赖版本锁定
-├── 📚 README.md             # 项目文档
-├── 🚫 .gitignore            # Git忽略文件
-├── 🐧 setup.sh              # Linux/macOS 自动安装脚本
-├── 🪟 setup.bat             # Windows 自动安装脚本
-└── 📁 templates/            # HTML模板目录
-    ├── 🏠 index.html        # 首页模板
-    └── 📖 docs.html         # 文档页面模板
+├── 📄 main.go                    # 🚀 应用启动入口
+├── 📋 go.mod                     # 📦 Go模块定义
+├── 🔒 go.sum                     # 🔒 依赖版本锁定
+├── 📚 README.md                  # 📖 项目文档
+├── 🚫 .gitignore                 # 🚫 Git忽略文件配置
+├── 🐧 setup.sh                   # 🐧 Linux/macOS 自动安装脚本
+├── 🪟 setup.bat                  # 🪟 Windows 自动安装脚本
+├── 📁 internal/                  # 📦 内部包目录(Go标准)
+│   ├── 📁 types/                 # 📝 数据类型定义
+│   │   └── types.go              # 🏗️ 所有结构体和类型
+│   ├── 📁 handlers/              # 🔧 API处理器
+│   │   └── handlers.go           # 🎯 所有API处理逻辑
+│   ├── 📁 routes/                # 🛣️ 路由管理
+│   │   └── routes.go             # 🔀 路由配置和管理
+│   └── 📁 utils/                 # 🛠️ 工具函数
+│       └── utils.go              # ⚡ 工具函数和中间件
+└── 📁 templates/                 # 📄 HTML模板目录
+    ├── 🏠 index.html             # 🏠 首页模板
+    └── 📖 docs.html              # 📚 文档页面模板
 ```
+
+### 🎯 架构特点
+
+- **📦 模块化设计**: 采用 Go 标准的`internal`目录结构，代码组织清晰
+- **🔧 服务模式**: 处理器使用依赖注入，便于测试和维护
+- **🛣️ 路由分离**: 路由配置独立管理，支持版本控制
+- **🛠️ 工具复用**: 通用工具函数集中管理，避免重复代码
+- **📝 类型安全**: 所有数据结构集中定义，确保类型一致性
 
 ## 🚀 快速开始
 
@@ -151,7 +168,14 @@ go mod tidy
 5. **启动服务**
 
 ```bash
+# 开发模式(直接运行)
 go run main.go
+
+# 生产模式(编译后运行)
+go build -o fpusdt_api .
+./fpusdt_api                # Linux/macOS
+# 或
+fpusdt_api.exe              # Windows
 ```
 
 🎉 **智能启动**: 程序会自动检测您的操作系统并打开默认浏览器访问主页！
@@ -490,13 +514,38 @@ echo "🎉 新地址: " . $result['data']['address'] . "\n";
 可以通过修改 `main.go` 中的配置来调整服务：
 
 ```go
-var config = Config{
+var config = &types.Config{
     Port:            "9527",                                   // 🌐 服务端口
     TronAPIURL:      "https://api.trongrid.io",                // 🔗 TRON API地址
     ContractAddress: "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",     // 💵 USDT合约地址
     Decimals:        6,                                        // 📊 USDT精度
 }
 ```
+
+### 🏗️ 代码架构说明
+
+- **`internal/types`**: 定义所有数据结构，包括配置、请求响应格式等
+- **`internal/handlers`**: 包含所有 API 处理逻辑，使用服务模式管理依赖
+- **`internal/routes`**: 路由配置和管理，支持版本化 API
+- **`internal/utils`**: 工具函数库，包括加密、网络、CORS 等功能
+- **`main.go`**: 应用启动入口，负责配置初始化和服务启动
+
+### 🎯 开发最佳实践
+
+1. **🔧 本地开发**: 使用`go run main.go`进行开发调试
+2. **🏗️ 生产构建**: 使用`go build -ldflags="-s -w" -o fpusdt_api .`优化编译
+3. **🧪 代码测试**: 新架构支持更好的单元测试和集成测试
+4. **📦 依赖管理**: 定期运行`go mod tidy`清理依赖
+5. **🔍 代码检查**: 使用`go vet`和`gofmt`保证代码质量
+
+### 📁 .gitignore 配置
+
+项目已配置了完善的`.gitignore`文件，自动忽略：
+
+- 编译产物（_.exe, _.dll 等）
+- IDE 配置文件
+- 系统临时文件
+- Go 编译缓存
 
 ## 🔒 安全注意事项
 
@@ -523,6 +572,8 @@ var config = Config{
 - 💾 **内存优化**: 相比其他语言版本内存占用降低 60%+
 - 📊 **高可用**: 99.9%系统可用性
 - 🔄 **负载均衡**: 支持水平扩展和负载均衡
+- 🏗️ **模块化架构**: 清晰的代码结构，便于维护和扩展
+- 📦 **单文件部署**: 编译后仅需单个可执行文件，部署简单
 
 ## 🛠️ 技术支持
 
@@ -547,6 +598,15 @@ var config = Config{
 本项目采用商业许可证，仅供学习和研究使用。商业使用请联系开发者获取授权。
 
 ## 📝 更新日志
+
+### v3.1-Go (2025-01-08) - 架构重构版
+
+- 🏗️ **架构重构**: 采用标准 Go 项目结构，代码组织更清晰
+- 📦 **模块化设计**: 使用`internal`目录，按功能分离不同包
+- 🔧 **服务模式**: 处理器使用依赖注入，便于测试和维护
+- 🛣️ **路由优化**: 路由配置独立管理，支持更好的版本控制
+- 🛠️ **工具分离**: 工具函数集中管理，提高代码复用性
+- 🚫 **构建优化**: 添加.gitignore，避免编译产物污染代码仓库
 
 ### v3.0-Go (2025-01-07)
 
